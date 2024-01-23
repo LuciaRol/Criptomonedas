@@ -1,0 +1,27 @@
+-- Crear proyecto Angular (CMD)
+ng new nombreProyecto
+    Primera pregunta: sí
+    Segunda pregunta: marcar css
+    Tercera pregunta: no
+
+-- Crear componente del proyecto (CMD)
+ng generate component nombreComponente
+
+-- Crear servicio para peticiones AJAX (CMD)
+ng g s nombreServicio
+
+-- Crear fichero de autentificación (CMD)
+ng g guard nombreAutentificacion
+    Marcar solo canActivate
+    Si se usa el mismo servicio se puede usar el mismo guard,
+    pero para rutas distintas hay que generar uno nuevo
+
+-- (Opcional) Añadir bootstrap (CMD)
+ng add @ng-bootstrap/ng-bootstrap
+
+    En la consola de VSC:
+    npm install bootstrap jquery popper.js
+    Meter los scripts de bootstrap en el Angular.json
+
+-- Para lanzarlo (VSC)
+npm run start
