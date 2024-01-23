@@ -1,1 +1,14 @@
-<p>moneda works!</p>
+<p>Lista items</p>
+
+<!-- <button (click)="mostrarDetalle(3)">detalle del 3</button>
+<button (click)="mostrarDetalle(6)">detalle del 6</button> -->
+
+<button (click)="obtenDatos()">Peticion ajax</button>
+    <ul>
+        <li *ngFor="let criptoMoneda of ajax.datosAPI; let i=index" (click)="borrarValor(i)">{{ criptoMoneda }}</li>
+    </ul>
+
+<input type="text" name="" id="" [(ngModel)]="contenidoImput" (keyup.enter)="nuevoValor()">
+
+
+

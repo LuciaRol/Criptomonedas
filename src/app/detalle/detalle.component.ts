@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, inject, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-detalle',
@@ -7,6 +8,14 @@ import { Component } from '@angular/core';
   templateUrl: './detalle.component.html',
   styleUrl: './detalle.component.css'
 })
-export class DetalleComponent {
+export class DetalleComponent implements OnInit{
+  @Input() id:string = "";
+  /* private route = inject(ActivatedRoute); */
 
+  ngOnInit():void{
+
+    // lanzar petición ajax del detalle
+    console.log(this.id);
+
+  }
 }
