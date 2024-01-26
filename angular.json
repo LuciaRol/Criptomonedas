@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Criptomonedas": {
+    "criptomonedas": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -25,9 +25,14 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -48,7 +53,13 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -57,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Criptomonedas:build:production"
+              "buildTarget": "criptomonedas:build:production"
             },
             "development": {
-              "buildTarget": "Criptomonedas:build:development"
+              "buildTarget": "criptomonedas:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -68,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "Criptomonedas:build"
+            "buildTarget": "criptomonedas:build"
           }
         },
         "test": {
@@ -88,6 +99,23 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "criptomonedas:build:production",
+              "serveTarget": "criptomonedas:serve:production"
+            },
+            "development": {
+              "buildTarget": "criptomonedas:build:development",
+              "serveTarget": "criptomonedas:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

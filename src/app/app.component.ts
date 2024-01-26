@@ -4,14 +4,17 @@ import { RouterOutlet, RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 
 import {CabeceraComponent} from './cabecera/cabecera.component';
+import { LandingComponent } from './landing/landing.component';
 import {monedaComponent } from './moneda/moneda.component';
 import {DetalleComponent} from './detalle/detalle.component';
+import { PieComponent } from './pie/pie.component';
+
 
 //decoradorr
 @Component({
   selector: 'app-root', //nombre del tag
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterModule, FormsModule, CabeceraComponent, monedaComponent, DetalleComponent], //cosas que usa el componente
+  imports: [CommonModule, RouterOutlet, RouterModule, FormsModule, CabeceraComponent, monedaComponent, DetalleComponent, PieComponent, LandingComponent], //cosas que usa el componente
   templateUrl: './app.component.html', //aquí tengo el html
   styleUrl: './app.component.css' //aquí tengo el css asociado al componente
 })

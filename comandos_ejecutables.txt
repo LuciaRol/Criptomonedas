@@ -25,3 +25,32 @@ ng add @ng-bootstrap/ng-bootstrap
 
 -- Para lanzarlo (VSC)
 npm run start
+
+-- Para generar la carpeta dist y el index.html
+npm run build
+
+
+----------------------------
+/* CONECTAR CON FIREBASE */
+----------------------------
+
+-- Crear los ficheros de entorno (CMD)
+ng g environments (--save)
+
+-- Ir a Firebase. Crear proyecto. Crear app en la configuración.
+
+-- Copiar la ruta de exportación de la app de Firebase y pegar en los 
+ficheros de entornos del proyecto.
+
+-- Iniciar Firebase (CMD)
+firebase init
+
+-- Conectar con Firebase (CMD)
+ng add @angular/fire
+    Marcar authentication y firestore
+    Si da problemas al crearlo, puede ser:
+    1. Ir a Angular.json y cambiar todas las mayúsculas del nombre del 
+    proyecto por minúsculas.
+
+
+

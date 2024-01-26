@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "criptomonedas-3746d": {
+      "hosting": {
+        "criptomonedas": [
+          "criptomonedas-3746d"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "criptomonedas-3746d"
+  }
+}

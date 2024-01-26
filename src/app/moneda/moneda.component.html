@@ -1,14 +1,23 @@
-<p>Lista items</p>
+<div class="container">
+    <div class="input-group">
+        <span class="input-group-text">Busca criptomonedas</span>
+        <input type="text" aria-label="Buscar" class="form-control">
+    </div>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-primary" (click)="obtenDatos()">Buscar</button>
+    </div>
 
-<!-- <button (click)="mostrarDetalle(3)">detalle del 3</button>
-<button (click)="mostrarDetalle(6)">detalle del 6</button> -->
-
-<button (click)="obtenDatos()">Peticion ajax</button>
-    <ul>
-        <li *ngFor="let criptoMoneda of ajax.datosAPI; let i=index" (click)="borrarValor(i)">{{ criptoMoneda }}</li>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let criptoMoneda of ajax.datosAPI; let i=index" (click)="borrarValor(i)">{{ criptoMoneda.name }}</li>
     </ul>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-primary">Ver detalles</button>
+        <button type="button" class="btn btn-primary">Guardar moneda</button>
+    </div>
+</div>
 
-<input type="text" name="" id="" [(ngModel)]="contenidoImput" (keyup.enter)="nuevoValor()">
+<router-outlet></router-outlet>
+
 
 
 

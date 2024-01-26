@@ -1,49 +1,7 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <app-cabecera></app-cabecera>
-  <app-moneda (lanzadaPeticionEvent) = "trataEventoDeHijo($event)"></app-moneda>
-  <app-detalle [id]="title"></app-detalle>
 
-  <main class="main">
-    <div class="content">
-  
-      <div class="left-side">
-
-        <!-- <h1>Hello, {{ title }}</h1>
-        <p>{{ nombreUsuario }}</p>
-        <p>{{title}}</p>
-        <img alt="item" src="{{urlImagen}}"><br> -->
-  
-        <!-- el botón aparece si se escribe algo en el input, 
-        para eso se usa el *ngIf -->
-        <!-- <button *ngIf="title" (click)="cambiaTitulo()">Dale!</button> -->
-  
-        <!-- el input modifica el titulo, pues está asociado a esa variable,
-        es lo que hace el [(ngModel)], es un enlace a dos vías -->
-        <!-- <input (keyup.enter)="pulsadaTecla()" [(ngModel)]="title" type="text" name=""> -->
-      </div>
-  
-      <!-- <div class="divider" role="separator" aria-label="Divider"></div>
-  
-      <div class="right-side"></div> -->
-    </div>
-  </main>
-  
-  
-  <router-outlet></router-outlet>
-</body>
-</html>
-
-
-
-
-  
+<app-cabecera></app-cabecera>
+<router-outlet></router-outlet>
+<app-pie></app-pie>
 
 
 
