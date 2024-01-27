@@ -16,6 +16,8 @@ export class PeticionesAJAXService {
   // inyección de dependencias
   firestore = inject(Firestore);
   datosFS: any [] = [];
+
+  nombreMonedasAPI:any [] = [];
   
 
   constructor(private http: HttpClient) {
@@ -29,24 +31,16 @@ export class PeticionesAJAXService {
     });
    }
 
-   peticionAJAX(){
-    
-    
-    //ponemos search para buscar el campo que tenemos que buscar en la api (con la apigecko se pone datos a secas)
-    return this.http.get("https://api.coingecko.com/api/v3/coins/markets").subscribe((datos:any)=>{
-      console.log(datos);
-    this.datosAPI = datos;
-    
-
-    // se pone el titulo que queremos
-    /* return this.http.get("https://www.omdbapi.com/?s=cars&apikey=ba7933ec").subscribe((datos:any)=>{
-    
-      console.log(datos)
-      this.datosAPI = datos.Search; */
-    
-
+   peticionAJAXnombre(){
+    return this.http.get("https://api.coingecko.com/api/v3/coins/list").subscribe((datosNombre:any)=>{
+      console.log(datosNombre);
+      this.nombreMonedasAPI = datosNombre;
     });
   }
+  
+
+  
+
 
   
 }

@@ -27,10 +27,10 @@ export class monedaComponent {
   }
 
   obtenDatos(){
-    this.ajax.peticionAJAX();
     this.lanzadaPeticionEvent.emit("Peticion en curso")
     this.router.navigate(['/detalle/lucia'])
     this.ajax.obtenerDatosFirestore();
+    this.ajax.peticionAJAXnombre();
   }
 
   nuevoValor(){
@@ -46,9 +46,7 @@ export class monedaComponent {
     this.router.navigate(["detalle", id, "lucia"])
   }
 
-  pruebaAjax(){
-    this.ajax.peticionAJAX();
-  }
+
 }
 
 

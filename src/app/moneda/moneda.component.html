@@ -1,19 +1,19 @@
 <div class="container">
-    <div class="input-group">
-        <span class="input-group-text">Busca criptomonedas</span>
-        <input type="text" aria-label="Buscar" class="form-control">
-    </div>
+    
     <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-primary" (click)="obtenDatos()">Buscar</button>
+        <button type="button" class="btn btn-primary" (click)="obtenDatos()">Ver lista de criptomonedas</button>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let monedaNombre of ajax.nombreMonedasAPI;">{{ monedaNombre.name }}
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-secondary">Ver detalles</button>
+                    <button type="button" class="btn btn-secondary">Guardar moneda</button>
+                </div>
+            </li>
+        </ul>
+        
     </div>
 
-    <ul class="list-group">
-        <li class="list-group-item" *ngFor="let criptoMoneda of ajax.datosAPI; let i=index" (click)="borrarValor(i)">{{ criptoMoneda.name }}</li>
-    </ul>
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-primary">Ver detalles</button>
-        <button type="button" class="btn btn-primary">Guardar moneda</button>
-    </div>
+    
 </div>
 
 
