@@ -30,6 +30,7 @@ export class monedaComponent {
     this.ajax.peticionAJAX();
     this.lanzadaPeticionEvent.emit("Peticion en curso")
     this.router.navigate(['/detalle/lucia'])
+    this.ajax.obtenerDatosFirestore();
   }
 
   nuevoValor(){
