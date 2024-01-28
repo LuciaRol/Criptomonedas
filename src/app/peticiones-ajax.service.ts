@@ -17,7 +17,7 @@ export class PeticionesAJAXService {
   firestore = inject(Firestore);
   datosFS: any [] = [];
 
-  nombreMonedasAPI:any [] = [];
+  monedasAPI:any [] = [];
   
 
   constructor(private http: HttpClient) {
@@ -32,15 +32,11 @@ export class PeticionesAJAXService {
    }
 
    peticionAJAXnombre(){
-    return this.http.get("https://api.coingecko.com/api/v3/coins/list").subscribe((datosNombre:any)=>{
-      console.log(datosNombre);
-      this.nombreMonedasAPI = datosNombre;
+    return this.http.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false").subscribe((datos:any)=>{
+  
+      console.log(datos);
+      this.monedasAPI = datos;
     });
   }
-  
-
-  
-
-
-  
+    
 }
