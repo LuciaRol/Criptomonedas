@@ -5,10 +5,11 @@
               <th scope="col">Imagen</th>
               <th scope="col">Nombre</th>
               <th scope="col">Símbolo</th>
-              <th scope="col">Descripción</th>
-              <th scope="col">Enlaces</th>
-              <th scope="col">Fecha  de creación</th>
-              <th scope="col">Precio actual</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Capitalización</th>
+              <th scope="col">Volumen</th>
+              <th scope="col">Valor más alto en 24h</th>
+              <th scope="col">Valor más bajo en 24h</th>
             </tr>
           </thead>
           <tbody *ngFor="let moneda of detalle_moneda">
@@ -22,7 +23,7 @@
               <td>{{ moneda.total_volume }}</td>
               <td>{{moneda.high_24h}}</td>
               <td>{{moneda.low_24h}}</td>
-            <td><button type="button" class="btn btn-secondary" >Guardar moneda</button></td>
+            <td><button type="button" class="btn btn-secondary" (click)="guardarMoneda()">Guardar moneda</button></td>
             </tr>
           </tbody>
     </table>

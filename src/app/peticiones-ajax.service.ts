@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { initializeApp } from "firebase/app";
-import {getDocs, collection, onSnapshot } from "firebase/firestore";
+import {getDocs, collection, onSnapshot, doc, addDoc} from "firebase/firestore";
 import { Firestore } from '@angular/fire/firestore';
 
 @Injectable({
@@ -12,7 +12,7 @@ import { Firestore } from '@angular/fire/firestore';
 export class PeticionesAJAXService {
 
   datosAPI:any [] = [];
-
+  
   // inyección de dependencias
   firestore = inject(Firestore);
   datosFS: any [] = [];
@@ -29,6 +29,11 @@ export class PeticionesAJAXService {
       this.datosFS = response.docs.map(doc => doc.data())
       console.log(this.datosFS);
     });
+   }
+
+   
+   subirDatosFirestore(data: any){
+    addDoc(collection(this.firestore, "cripto"), {data});
    }
 
    peticionAJAXnombre(){

@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 
 import { DetalleComponent } from '../detalle/detalle.component';
 import { detalles} from '../cart.service';
-
+import { Firestore } from '@angular/fire/firestore';
 
 
 @Component({
@@ -25,6 +25,7 @@ export class monedaComponent {
   objetoFiltrado : any;
   @Output() monedaSeleccionadaEvent = new EventEmitter<any>();
   @Output() lanzadaPeticionEvent = new EventEmitter<string>();
+  
   constructor(public ajax:PeticionesAJAXService, private router:Router, private detalles: detalles) {
   }
 
@@ -55,6 +56,17 @@ export class monedaComponent {
     console.log(this.detalles.mostrar())
   }
 
+  guardarMoneda(json: any, id: string) {
+    this.objetoFiltrado = Object.values(json).find((objeto: any) => objeto.id === id);
+    this.detalles.borrardetalle()
+    this.detalles.detalle(this.objetoFiltrado);
+    console.log(this.detalles.mostrar());
+    this.ajax.subirDatosFirestore(this.objetoFiltrado);
+    /*aquí falta el push a base de datos this.detalles.mostrar()*/
+    this.detalles.borrardetalle()
+  }
+
+     
 }
 
 
