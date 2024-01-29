@@ -11,30 +11,20 @@
               <th scope="col">Precio actual</th>
             </tr>
           </thead>
-        <tbody>
-          <tr>
-            <th></th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><button type="button" class="btn btn-secondary">Guardar moneda</button></td>
-          </tr>
-        </tbody>
+          <tbody *ngFor="let moneda of detalle_moneda">
+              
+            <tr>
+              <th><img src="{{ moneda.image }}" alt=""></th>
+              <td>{{ moneda.name }}</td>
+              <td>{{ moneda.symbol }}</td>
+              <td>{{ moneda.current_price }}</td>
+              <td>{{ moneda.market_cap }}</td>
+              <td>{{ moneda.total_volume }}</td>
+              <td>{{moneda.high_24h}}</td>
+              <td>{{moneda.low_24h}}</td>
+            <td><button type="button" class="btn btn-secondary" >Guardar moneda</button></td>
+            </tr>
+          </tbody>
     </table>
 
-    
-
-    
 </div>
-
-
-
-
-
-
-
-

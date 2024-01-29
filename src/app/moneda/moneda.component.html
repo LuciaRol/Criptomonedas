@@ -16,7 +16,9 @@
               <th scope="col">Valor más bajo en 24h</th>
             </tr>
           </thead>
-        <tbody *ngFor="let moneda of ajax.monedasAPI;">
+          
+        <tbody *ngFor="let moneda of ajax.monedasAPI">
+              
           <tr>
             <th><img src="{{ moneda.image }}" alt=""></th>
             <td>{{ moneda.name }}</td>
@@ -26,7 +28,7 @@
             <td>{{ moneda.total_volume }}</td>
             <td>{{moneda.high_24h}}</td>
             <td>{{moneda.low_24h}}</td>
-            <td><button type="button" class="btn btn-secondary" routerLink="/detalle">Ver detalles</button></td>
+            <td><button type="button" class="btn btn-secondary" routerLink="/detalle" (click)="verDetalles(ajax.monedasAPI,moneda.id)">Ver detalles</button></td> <!-- hace falta traer el número de index de cada una de la moneda seleccionada <td>{{ moneda.id }}</td>-->
             <td><button type="button" class="btn btn-secondary" >Guardar moneda</button></td>
           </tr>
         </tbody>

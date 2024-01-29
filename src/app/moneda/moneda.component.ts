@@ -7,6 +7,7 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 import { Router } from '@angular/router';
 
 import { DetalleComponent } from '../detalle/detalle.component';
+import { detalles} from '../cart.service';
 
 
 
@@ -19,11 +20,12 @@ import { DetalleComponent } from '../detalle/detalle.component';
 })
 export class monedaComponent {
   //definición del tipo
-   
+  monedaIdSeleccionada: any;
   contenidoImput="";
+  objetoFiltrado : any;
+  @Output() monedaSeleccionadaEvent = new EventEmitter<any>();
   @Output() lanzadaPeticionEvent = new EventEmitter<string>();
-  constructor(public ajax:PeticionesAJAXService, private router:Router) {
-    
+  constructor(public ajax:PeticionesAJAXService, private router:Router, private detalles: detalles) {
   }
 
   obtenDatos(){
@@ -43,9 +45,15 @@ export class monedaComponent {
 
   mostrarDetalle(id:any){
     console.log("navegando al detalle del "+id)
-    this.router.navigate(["detalle", id, "lucia"])
+    this.router.navigate(["detalle", id])
   }
 
+  verDetalles(json: any, id: string) {
+    this.objetoFiltrado = Object.values(json).find((objeto: any) => objeto.id === id);
+    this.detalles.borrardetalle()
+    this.detalles.detalle(this.objetoFiltrado);
+    console.log(this.detalles.mostrar())
+  }
 
 }
 

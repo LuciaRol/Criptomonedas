@@ -32,7 +32,7 @@ export class PeticionesAJAXService {
    }
 
    peticionAJAXnombre(){
-    return this.http.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false").subscribe((datos:any)=>{
+    return this.http.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=50&page=1&sparkline=false").subscribe((datos:any)=>{
   
       console.log(datos);
       this.monedasAPI = datos;
