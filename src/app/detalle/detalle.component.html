@@ -1,15 +1,19 @@
 <div class="container">
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-primary"  routerLink="/moneda">Ver lista de criptomonedas</button>
+    <button type="button" class="btn btn-primary" routerLink="/portfolio">Ir a mi portfolio</button>
+</div>
     <table class="table">
         <thead>
             <tr>
               <th scope="col">Imagen</th>
               <th scope="col">Nombre</th>
               <th scope="col">Símbolo</th>
-              <th scope="col">Precio</th>
+              <th scope="col">Descripción</th>
               <th scope="col">Capitalización</th>
-              <th scope="col">Volumen</th>
-              <th scope="col">Valor más alto en 24h</th>
-              <th scope="col">Valor más bajo en 24h</th>
+              <th scope="col">Enlaces</th>
+              <th scope="col">Fecha de creación</th>
+              <th scope="col">Valor en €</th>
             </tr>
           </thead>
           <tbody *ngFor="let moneda of detalle_moneda">
@@ -18,12 +22,11 @@
               <th><img src="{{ moneda.image }}" alt=""></th>
               <td>{{ moneda.name }}</td>
               <td>{{ moneda.symbol }}</td>
-              <td>{{ moneda.current_price }}</td>
-              <td>{{ moneda.market_cap }}</td>
-              <td>{{ moneda.total_volume }}</td>
-              <td>{{moneda.high_24h}}</td>
-              <td>{{moneda.low_24h}}</td>
-            <td><button type="button" class="btn btn-secondary" (click)="guardarMoneda()">Guardar moneda</button></td>
+              <td>{{ moneda.description }}</td>
+              <td>{{ moneda.links }}</td>
+              <td>{{ moneda.genesis_date }}</td>
+              <td>{{moneda.current_price}}</td>
+         
             </tr>
           </tbody>
     </table>

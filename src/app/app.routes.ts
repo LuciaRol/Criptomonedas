@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { LandingComponent } from './landing/landing.component';
 import { monedaComponent } from './moneda/moneda.component';
 import { DetalleComponent } from './detalle/detalle.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
 import { detalles} from './cart.service';
 
 
@@ -16,6 +17,8 @@ export const routes: Routes = [
 
     {path: 'cart', component: detalles}, /*añadida para traer cart.service https://angular.io/start/start-data*/ 
 
-    {path: 'detalle', component: DetalleComponent, /* canActivate:[authGuard] */}
+    {path: 'detalle', component: DetalleComponent, /* canActivate:[authGuard] */},
+
+    {path: 'portfolio', component: PortfolioComponent}
     
 ];

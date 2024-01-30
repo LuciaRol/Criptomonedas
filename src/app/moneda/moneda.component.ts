@@ -8,6 +8,9 @@ import { Router } from '@angular/router';
 
 import { DetalleComponent } from '../detalle/detalle.component';
 import { detalles} from '../cart.service';
+
+import { PortfolioComponent } from '../portfolio/portfolio.component';
+
 import { Firestore } from '@angular/fire/firestore';
 
 

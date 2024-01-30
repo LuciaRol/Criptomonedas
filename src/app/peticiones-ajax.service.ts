@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { initializeApp } from "firebase/app";
-import {getDocs, collection, onSnapshot, doc, addDoc} from "firebase/firestore";
+import {getDocs, collection, onSnapshot, deleteDoc, doc, addDoc, query, where} from "firebase/firestore";
 import { Firestore } from '@angular/fire/firestore';
 
 @Injectable({
@@ -31,6 +31,22 @@ export class PeticionesAJAXService {
     });
    }
 
+  
+  
+  async borrarMoneda(id: string) {
+    const collectionRef = collection(this.firestore, "cripto");
+    const querySnapshot = await getDocs(collectionRef);
+    
+    querySnapshot.forEach((doc) => {
+        const data = doc.data(); 
+        Object.values(data).forEach((item: any) => {
+            if (item.id === id) {
+                deleteDoc(doc.ref);
+            }
+        });
+    });
+}
+
    
    subirDatosFirestore(data: any){
     addDoc(collection(this.firestore, "cripto"), {data});
@@ -43,5 +59,9 @@ export class PeticionesAJAXService {
       this.monedasAPI = datos;
     });
   }
+
+
+
+  
     
 }

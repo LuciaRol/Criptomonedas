@@ -32,10 +32,5 @@ export class DetalleComponent implements OnInit{
       // lanzar petición ajax del detalle
   }
 
-  guardarMoneda() {
-
-    this.ajax.subirDatosFirestore(this.detalles.mostrar());
-  }
-
 
 }

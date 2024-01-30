@@ -1,0 +1,60 @@
+<div class="container">
+    
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-primary" routerLink="/moneda">Ver lista de criptomonedas</button>
+        <button type="button" class="btn btn-primary" (click)="obtenDatosFS()">Ir a mi portfolio</button>
+        
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">Imagen</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Símbolo</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Capitalización</th>
+              <th scope="col">Volumen</th>
+              <th scope="col">Valor más alto en 24h</th>
+              <th scope="col">Valor más bajo en 24h</th>
+            </tr>
+          </thead>
+          
+        <tbody *ngFor="let moneda of ajax.datosFS":key="moneda.id">
+              
+          <tr>
+            <th><img src="{{ moneda.data.image }}" alt=""></th>
+            <td>{{ moneda.data.name }}</td>
+            <td>{{ moneda.data.symbol }}</td>
+            <td>{{ moneda.data.current_price }}</td>
+            <td>{{ moneda.data.market_cap }}</td>
+            <td>{{ moneda.data.total_volume }}</td>
+            <td>{{moneda.data.high_24h}}</td>
+            <td>{{moneda.data.low_24h}}</td>
+            <td><button type="button" class="btn btn-secondary" (click)="borrarMonedaid(moneda.data.id)">Dejar de seguir</button></td>
+            
+          </tr>
+        </tbody>
+    </table>
+
+    
+
+    
+</div>
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
