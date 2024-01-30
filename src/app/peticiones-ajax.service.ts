@@ -3,6 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { initializeApp } from "firebase/app";
 import {getDocs, collection, onSnapshot, deleteDoc, doc, addDoc, query, where} from "firebase/firestore";
 import { Firestore } from '@angular/fire/firestore';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { RouterModule, RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +20,10 @@ export class PeticionesAJAXService {
   // inyección de dependencias
   firestore = inject(Firestore);
   datosFS: any [] = [];
-
+  loading: boolean = true;
   monedasAPI:any [] = [];
-  
-
-  constructor(private http: HttpClient) {
+  detallemoneda:any;
+  constructor(public http: HttpClient) {
 
   }
 
@@ -60,7 +63,18 @@ export class PeticionesAJAXService {
     });
   }
 
-
+  
+  peticionAJAXdetalle(coinID : string) {
+    this.http.get<any>("https://api.coingecko.com/api/v3/coins/"+ coinID)
+      .subscribe(data => {
+        this.detallemoneda = data;
+        this.loading = false;
+        console.log(this.detallemoneda); // Logging the data to verify
+        console.log("peticion ajaxthis.detallemoneda dentro de peticionajaxdetalle");
+        
+      });
+  }
+  
 
   
     

@@ -3,6 +3,8 @@
     <button type="button" class="btn btn-primary"  routerLink="/moneda">Ver lista de criptomonedas</button>
     <button type="button" class="btn btn-primary" routerLink="/portfolio">Ir a mi portfolio</button>
 </div>
+<div *ngIf="ajax.loading">Loading...</div>
+<div *ngIf="!ajax.loading">
     <table class="table">
         <thead>
             <tr>
@@ -10,23 +12,38 @@
               <th scope="col">Nombre</th>
               <th scope="col">Símbolo</th>
               <th scope="col">Descripción</th>
-              <th scope="col">Capitalización</th>
-              <th scope="col">Enlaces</th>
+              <th scope="col">Web</th>
+              <th scope="col">Github</th>
+              <th scope="col">Twitter</th>
               <th scope="col">Fecha de creación</th>
-              <th scope="col">Valor en €</th>
             </tr>
           </thead>
-          <tbody *ngFor="let moneda of detalle_moneda">
-              
+          <tbody>
             <tr>
-              <th><img src="{{ moneda.image }}" alt=""></th>
-              <td>{{ moneda.name }}</td>
-              <td>{{ moneda.symbol }}</td>
-              <td>{{ moneda.description }}</td>
-              <td>{{ moneda.links }}</td>
-              <td>{{ moneda.genesis_date }}</td>
-              <td>{{moneda.current_price}}</td>
-         
+              <th><img src="{{ ajax.detallemoneda.image.large }}" alt=""></th>
+              <td>{{ ajax.detallemoneda.name }}</td>
+              <td>{{ ajax.detallemoneda.symbol }}</td>
+              <td>
+                <span v-if="ajax.detallemoneda && ajax.detallemoneda.description && ajax.detallemoneda.description.es">
+                  {{ ajax.detallemoneda.description.es }}
+                </span>
+                <span v-else-if="ajax.detallemoneda && ajax.detallemoneda.description && ajax.detallemoneda.description.en">
+                  {{ ajax.detallemoneda.description.en }}
+                </span>
+                <span v-else>
+                  <!-- Si no hay descripción en español ni en inglés -->
+                  Descripción no disponible
+                </span>
+              </td>
+              <td>{{ ajax.detallemoneda.description.es }}</td>
+              <td>{{ ajax.detallemoneda.links.homepage }}</td>
+              <td>{{ ajax.detallemoneda.links.repos_url.github }}</td>
+              <td>{{ ajax.detallemoneda.links.twitter_screen_name }}</td>
+              <td>{{ ajax.detallemoneda.official_forum_url }}</td> 
+              <td>{{ajax.detallemoneda.genesis_date}}</td>
+              <td>{{ajax.detallemoneda.low_24h}}</td>
+              
+              descripción, links (web, redes sociales y Github), fecha en la que surgió y valor actual en euros.
             </tr>
           </tbody>
     </table>
