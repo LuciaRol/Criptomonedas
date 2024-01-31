@@ -17,6 +17,7 @@
               <th scope="col">Github</th>
               <th scope="col">Twitter</th>
               <th scope="col">Fecha de creación</th>
+              <th scope="col">Precio Actual</th>
             </tr>
           </thead>
           <tbody>
@@ -28,6 +29,7 @@
               <td>{{ ajax.detallemoneda.links.repos_url.github }}</td>
               <td>{{ ajax.detallemoneda.links.twitter_screen_name }}</td>
               <td>{{ajax.detallemoneda.genesis_date}}</td>
+              <td>{{ajax.detallemoneda.market_data.current_price.eur| currency: 'EUR'}}</td>
             </tr>
 
 

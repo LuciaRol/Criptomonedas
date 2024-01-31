@@ -45,7 +45,8 @@ export class DetalleComponent implements OnInit{
       this.ajax.peticionAJAXdetalle(this.detalle_moneda_id.id); 
       
       /*this.ajax.peticionAJAXgrafico(this.detalle_moneda_id.id, 7);
-      con esta petición se obtienen los datos para hacer el gráfico. No soy capaz de realizar el gráfico con el array ya preparado...*/
+      con esta petición se obtienen los datos para hacer el gráfico. 
+      No soy capaz de realizar el gráfico con el array ya preparado...*/
       
   }
 }
