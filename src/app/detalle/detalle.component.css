@@ -2,3 +2,31 @@ img{
     width: 50px;
     height: 50px;
 }
+
+.btn{
+    font-size: 1rem !important;
+    background-color: #6c757d !important;
+    border-color: #6c757d;
+  }
+  
+  .btn:hover{
+    background-color: #343a40 !important;
+    border-color: #343a40;
+  }
+
+.btn-group{
+    margin: 10px;
+    display: flex;
+    gap: 10px;
+    
+}
+
+.btn-group button{
+    background-color: #0dcaf0c5 !important;
+    border-color: transparent;
+}
+
+.btn-group button:hover{
+    background-color: #0d6efd !important;
+    border-color: transparent;
+}

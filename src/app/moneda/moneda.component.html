@@ -1,8 +1,8 @@
 <div class="container">
     
     <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-primary" (click)="startConsulta()">Ver lista de criptomonedas</button>
-        <button type="button" class="btn btn-primary" routerLink="/portfolio">Ir a mi portfolio</button>
+        <button type="button" class="btn btn-primary" (click)="startConsulta()">Portfolio</button>
+        <button type="button" class="btn btn-primary" routerLink="/portfolio">Mis monedas</button>
     </div>
     <div *ngIf="ajax.loading">Loading...</div>
     <div *ngIf="!ajax.loading">
