@@ -1,9 +1,11 @@
 <div class="container">
     
     <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-primary" (click)="obtenDatos()">Ver lista de criptomonedas</button>
+        <button type="button" class="btn btn-primary" (click)="startConsulta()">Ver lista de criptomonedas</button>
         <button type="button" class="btn btn-primary" routerLink="/portfolio">Ir a mi portfolio</button>
     </div>
+    <div *ngIf="ajax.loading">Loading...</div>
+    <div *ngIf="!ajax.loading">
     <table class="table">
         <thead>
             <tr>
@@ -24,11 +26,11 @@
             <th><img src="{{ moneda.image }}" alt=""></th>
             <td>{{ moneda.name }}</td>
             <td>{{ moneda.symbol }}</td>
-            <td>{{ moneda.current_price }}</td>
-            <td>{{ moneda.market_cap }}</td>
-            <td>{{ moneda.total_volume }}</td>
-            <td>{{moneda.high_24h}}</td>
-            <td>{{moneda.low_24h}}</td>
+            <td>{{ moneda.current_price | currency: 'EUR'}}</td>
+            <td>{{ moneda.market_cap | currency: 'EUR' }}</td>
+            <td>{{ moneda.total_volume | currency: 'EUR' }}</td>
+            <td>{{moneda.high_24h| currency: 'EUR'}}</td>
+            <td>{{moneda.low_24h| currency: 'EUR'}}</td>
             <td><button type="button" class="btn btn-secondary" routerLink="/detalle" (click)="verDetalles(ajax.monedasAPI,moneda.id)">Ver detalles</button></td>
             <td><button type="button" class="btn btn-secondary" (click)="guardarMoneda(ajax.monedasAPI,moneda.id)">Guardar moneda</button></td>
           </tr>

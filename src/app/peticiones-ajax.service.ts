@@ -23,6 +23,9 @@ export class PeticionesAJAXService {
   loading: boolean = true;
   monedasAPI:any [] = [];
   detallemoneda:any;
+  descripcionmoneda:any;
+  graficomoneda: any;
+  from: any;
   constructor(public http: HttpClient) {
 
   }
@@ -56,26 +59,49 @@ export class PeticionesAJAXService {
    }
 
    peticionAJAXnombre(){
+    this.loading = true;
     return this.http.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=50&page=1&sparkline=false").subscribe((datos:any)=>{
   
       console.log(datos);
       this.monedasAPI = datos;
+      this.loading = false;
     });
   }
 
   
   peticionAJAXdetalle(coinID : string) {
+    this.loading = true;
     this.http.get<any>("https://api.coingecko.com/api/v3/coins/"+ coinID)
       .subscribe(data => {
         this.detallemoneda = data;
         this.loading = false;
-        console.log(this.detallemoneda); // Logging the data to verify
-        console.log("peticion ajaxthis.detallemoneda dentro de peticionajaxdetalle");
-        
+      
       });
   }
   
+  peticionAJAXgrafico(coinID : string, days: any) {
 
+    this.http.get<any>("https://api.coingecko.com/api/v3/coins/" + coinID + "/market_chart/range?vs_currency=eur&from="+ this.getfromUnixTimestamp(days) + "&to=" + this.getCurrentUnixTimestamp())
+      .subscribe(data => {
+        this.graficomoneda = data;
+        this.graficomoneda = this.graficomoneda.prices
+        this.loading = false;
+        console.log(this.graficomoneda)
+        
+      });
+  }
+
+  getCurrentUnixTimestamp(): number {
+    // Get current time in milliseconds
+    const currentTime = new Date().getTime();
+    // Convert milliseconds to seconds and return
+    return Math.floor(currentTime);
+  }
   
-    
+  getfromUnixTimestamp(days: any): number {
+    const millisecondsInWeek = days * 24 * 60 * 60 * 1000; // Milisegundos en una semana
+    const currentTime = new Date().getTime(); // Obtener el tiempo actual en milisegundos
+    const timestampOneWeekAgo = currentTime - millisecondsInWeek; // Restar una semana al tiempo actual
+    return Math.floor(timestampOneWeekAgo / 1000); // Convertir milisegundos a segundos y redondear
+  }
 }
